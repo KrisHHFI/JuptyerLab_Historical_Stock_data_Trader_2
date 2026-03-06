@@ -13,11 +13,14 @@ def build_performance_rows(performance: Dict[str, Any]) -> List[Tuple[str, str]]
         performance: Dictionary containing performance metrics.
     """
     strategy = str(performance.get("strategy", ""))
-    initial_capital = float(performance.get("initial_capital", 0.0))
-    final_capital = float(performance.get("final_capital", 0.0))
-    net_pnl = float(performance.get("net_pnl", 0.0))
-    total_fees = float(performance.get("total_fees_paid", 0.0))
-    return_pct = float(performance.get("return_pct", 0.0))
+    starting_value = float(performance.get("starting_value", performance.get("initial_capital", 0.0)))
+    worst_end_value = float(performance.get("worst_end_value", 0.0))
+    worst_ticker = str(performance.get("worst_ticker", ""))
+    best_end_value = float(performance.get("best_end_value", 0.0))
+    best_ticker = str(performance.get("best_ticker", ""))
+    median_end_value = float(performance.get("median_end_value", 0.0))
+    avg_end_value = float(performance.get("avg_end_value", 0.0))
+    avg_fees = float(performance.get("avg_fees", 0.0))
     trade_count = int(performance.get("trade_count", 0))
     winning_trades = int(performance.get("winning_trades", 0))
     losing_trades = int(performance.get("losing_trades", 0))
@@ -26,11 +29,12 @@ def build_performance_rows(performance: Dict[str, Any]) -> List[Tuple[str, str]]
 
     return [
         ("Strategy", strategy),
-        ("Initial capital", f"${initial_capital:,.2f}"),
-        ("Final capital", f"${final_capital:,.2f}"),
-        ("Net P&L", f"${net_pnl:,.2f}"),
-        ("Total fees", f"${total_fees:,.2f}"),
-        ("Return %", f"{return_pct:.2f}%"),
+        ("Starting value", f"${starting_value:,.2f}"),
+        ("Worst end value", f"${worst_end_value:,.2f} ({worst_ticker})"),
+        ("Best end value", f"${best_end_value:,.2f} ({best_ticker})"),
+        ("Median end value", f"${median_end_value:,.2f}"),
+        ("Average end value", f"${avg_end_value:,.2f}"),
+        ("Average fees", f"${avg_fees:,.2f}"),
         ("Trades", str(trade_count)),
         ("Winning trades", str(winning_trades)),
         ("Losing trades", str(losing_trades)),

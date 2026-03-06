@@ -4,6 +4,7 @@ The primary exported function is :func:`aggregate_performances` which
 combines a list of per-file performance dictionaries into a single
 summary dictionary compatible with ``build_performance_rows``.
 """
+import statistics
 from typing import Any, Dict, List
 
 
@@ -25,6 +26,23 @@ def aggregate_performances(
     )
     combined_final: float = sum(
         float(p.get("final_capital", 0.0)) for p in collected_performances
+    )
+
+    per_stock_final: List[float] = [
+        float(p.get("final_capital", 0.0)) for p in collected_performances
+    ]
+    starting_value: float = (
+        float(collected_performances[0].get("initial_capital", 0.0))
+        if collected_performances
+        else 0.0
+    )
+    worst_end_value: float = min(per_stock_final) if per_stock_final else 0.0
+    best_end_value: float = max(per_stock_final) if per_stock_final else 0.0
+    worst_ticker: str = tickers[per_stock_final.index(worst_end_value)] if per_stock_final and tickers else ""
+    best_ticker: str = tickers[per_stock_final.index(best_end_value)] if per_stock_final and tickers else ""
+    median_end_value: float = statistics.median(per_stock_final) if per_stock_final else 0.0
+    avg_end_value: float = (
+        sum(per_stock_final) / len(per_stock_final) if per_stock_final else 0.0
     )
     combined_net_pnl: float = sum(float(p.get("net_pnl", 0.0)) for p in collected_performances)
     combined_fees: float = sum(float(p.get("total_fees_paid", 0.0)) for p in collected_performances)
@@ -53,8 +71,16 @@ def aggregate_performances(
         "strategy": f"Combined ({', '.join(tickers)})",
         "initial_capital": combined_initial,
         "final_capital": combined_final,
+        "starting_value": starting_value,
+        "worst_end_value": worst_end_value,
+        "worst_ticker": worst_ticker,
+        "best_end_value": best_end_value,
+        "best_ticker": best_ticker,
+        "median_end_value": median_end_value,
+        "avg_end_value": avg_end_value,
         "net_pnl": combined_net_pnl,
         "total_fees_paid": combined_fees,
+        "avg_fees": combined_fees / len(collected_performances) if collected_performances else 0.0,
         "return_pct": combined_return_pct,
         "trade_count": combined_trade_count,
         "winning_trades": combined_wins,
