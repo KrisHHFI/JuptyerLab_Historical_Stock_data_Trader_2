@@ -74,6 +74,18 @@ historicalStockTrader2/
    └── trading_algorithms/  # internal algorithm files (git-ignored)
 ```
 
+## ML Parameter Optimizer
+
+- `ml_optimizer.py` uses Optuna (Bayesian TPE) to automatically search for the best parameter values for the active trading algorithm.
+- It reads `active_algorithm` from `constants.py` — no other changes needed to switch algorithms.
+- Every time a new best result is found during the run, it is appended to `ml_optimizer_results.txt` (git-ignored).
+- Update the `params` dict inside `objective()` whenever the active algorithm changes, to match its parameters and their sensible search ranges.
+- **How to run:**
+  ```
+  /opt/anaconda3/bin/python ml_optimizer.py
+  ```
+- Increase `N_TRIALS` for more thorough search. Results are saved incrementally so interrupting early still keeps all improvements found so far.
+
 ## Notes
 
 - Repository: https://github.com/KrisHHFI/JuptyerLab_Historical_Stock_data_Trader

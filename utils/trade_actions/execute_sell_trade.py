@@ -7,7 +7,7 @@ def execute_sell_trade(
     cash: float,
     shares: int,
     buy_price: float | None,
-    buy_time: pd.Timestamp,
+    buy_time: pd.Timestamp | None,
     sell_price: float,
     sell_time: pd.Timestamp,
     trade_number: int,

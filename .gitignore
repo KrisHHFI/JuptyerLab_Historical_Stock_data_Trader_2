@@ -29,3 +29,6 @@ raw_data/
 
 # Trading algorithm workspace
 utils/trading_algorithms/
+
+# ML optimizer output
+ml_optimizer_results.txt
