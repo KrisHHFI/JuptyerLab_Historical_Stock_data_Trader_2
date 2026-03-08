@@ -37,6 +37,9 @@ historicalStockTrader2/
 ├── README.md
 ├── constants.py
 ├── main.ipynb
+├── machine_learning/
+│   ├── ml_constants.py
+│   └── ml_optimizer.py
 ├── raw_data/  # local CSV inputs (git-ignored)
 └── utils/
    ├── __init__.py
@@ -76,15 +79,16 @@ historicalStockTrader2/
 
 ## ML Parameter Optimizer
 
-- `ml_optimizer.py` uses Optuna (Bayesian TPE) to automatically search for the best parameter values for the active trading algorithm.
-- It reads `active_algorithm` from `constants.py` — no other changes needed to switch algorithms.
+- `machine_learning/ml_optimizer.py` is a fully generic runner — it contains no algorithm-specific logic.
+- `machine_learning/ml_constants.py` holds the parameter search spaces. Each algorithm has a registered builder function that defines its tunable parameters and search ranges.
+- To switch algorithms: change `active_algorithm` in `constants.py`. The correct param builder is resolved automatically from `ml_constants.py`.
+- To add a new algorithm: add a `_<algo_name>_params(trial)` function and register it in `ML_PARAM_BUILDERS` inside `ml_constants.py`.
 - Every time a new best result is found during the run, it is appended to `ml_optimizer_results.txt` (git-ignored).
-- Update the `params` dict inside `objective()` whenever the active algorithm changes, to match its parameters and their sensible search ranges.
-- **How to run:**
+- **How to run** (from the project root directory):
   ```
-  /opt/anaconda3/bin/python ml_optimizer.py
+  /opt/anaconda3/bin/python machine_learning/ml_optimizer.py
   ```
-- Increase `N_TRIALS` for more thorough search. Results are saved incrementally so interrupting early still keeps all improvements found so far.
+- Increase `ml_n_trials` in `constants.py` for more thorough search. Results are saved incrementally so interrupting early still keeps all improvements found so far.
 
 ## Notes
 

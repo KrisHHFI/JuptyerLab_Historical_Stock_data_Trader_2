@@ -13,6 +13,6 @@ transaction_fee_bps: float = 1.0
 active_algorithm = run_mock_ema_crossover_backtest
 
 # ML Optimizer
-ml_n_trials: int = 20
+ml_n_trials: int = 100
 ml_trial_delay_seconds: float = 0.5   # pause between trials to reduce CPU heat
 ml_results_file: Path = Path(__file__).parent / "ml_optimizer_results.txt"
