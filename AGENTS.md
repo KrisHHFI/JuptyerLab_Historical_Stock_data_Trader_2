@@ -99,7 +99,10 @@ historicalStockTrader2/
   ```
   python tools/cli.py start
   ```
-- On `start`, it calls the GitHub Models API (via the `openai` package) using GPT-4o to return the name of a popular quantitative trading strategy formatted with words separated by `_`.
+- On `start`, it calls the GitHub Models API (via the `openai` package) using GPT-4o to:
+  1. Generate the name of a popular quantitative trading strategy (words separated by `_`).
+  2. Generate a fully compatible backtest function following the project's algorithm conventions.
+  3. Save the generated file to `utils/trading_algorithms/run_mock_<strategy_name>_backtest.py`.
 - Requires the `GITHUB_TOKEN` environment variable to be set to a valid GitHub personal access token. Add it permanently with:
   ```
   echo 'export GITHUB_TOKEN=your_token_here' >> ~/.zshrc && source ~/.zshrc

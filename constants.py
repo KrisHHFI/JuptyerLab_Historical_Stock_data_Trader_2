@@ -1,16 +1,12 @@
 from pathlib import Path
-from utils.trading_algorithms.run_mock_ema_crossover_backtest import run_mock_ema_crossover_backtest #1
-#from utils.trading_algorithms.run_mock_vwap_ema_crossover_backtest import run_mock_vwap_ema_crossover_backtest
-#from utils.trading_algorithms.run_mock_turtle_trading_backtest import run_mock_turtle_trading_backtest
-#from utils.trading_algorithms.run_mock_orb_backtest import run_mock_orb_backtest
-#from utils.trading_algorithms.run_mock_rsi_bb_mean_reversion_backtest import run_mock_rsi_bb_mean_reversion_backtest
+from utils.trading_algorithms.run_mock_pairs_trading_backtest import run_mock_pairs_trading_backtest
 
 raw_data_folder: str = "/Users/kristopherpepper/Documents/jupyterProjects/historicalStockTrader2/raw_data"
 
 # Trading
 capital: int = 10000
 transaction_fee_bps: float = 1.0
-active_algorithm = run_mock_ema_crossover_backtest
+active_algorithm = run_mock_pairs_trading_backtest
 
 # ML Optimizer
 ml_n_trials: int = 100
