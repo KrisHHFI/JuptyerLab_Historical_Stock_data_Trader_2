@@ -22,7 +22,7 @@ echo 'export GITHUB_TOKEN=your_token_here' >> ~/.zshrc && source ~/.zshrc
 trader help
 ```
 
-### Generate a new trading algorithm
+### Generate a new trading algorithm, then runs the notebook
 
 ```bash
 trader create

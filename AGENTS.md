@@ -49,7 +49,8 @@ historicalStockTrader2/
 │   ├── save_algorithm.py               # writes the generated file to trading_algorithms/
 │   ├── save_ml_params.py               # inserts the param builder into ml_constants.py
 │   ├── apply_best_params.py            # reads ml_best_params.json and patches the active algo's defaults
-│   └── update_constants.py             # updates constants.py with the new active algorithm
+│   ├── update_constants.py             # updates constants.py with the new active algorithm
+│   └── run_notebook.py                 # restarts the kernel and executes main.ipynb via nbconvert
 ├── machine_learning/
 │   ├── ml_constants.py
 │   └── ml_optimizer.py
@@ -127,6 +128,7 @@ historicalStockTrader2/
   ```
 - When adding a new CLI command, add a copy-paste usage example to the **Commands** section of `README.md`.
 - `trader refine` runs `machine_learning/ml_optimizer.py` via `cmd_create_refine.py`.
+- After `trader create` finishes generating and activating the new algorithm, it automatically restarts the kernel and runs `main.ipynb` end-to-end via `tools/run_notebook.py` (uses `jupyter nbconvert --execute --inplace`).
 
 ## Notes
 

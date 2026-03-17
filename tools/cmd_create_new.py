@@ -6,6 +6,7 @@ from generate_ml_params_code import generate_ml_params_code
 from save_algorithm import save_algorithm
 from save_ml_params import save_ml_params
 from update_constants import update_constants
+from run_notebook import run_notebook
 
 
 def cmd_create_new() -> None:
@@ -27,3 +28,5 @@ def cmd_create_new() -> None:
 
     update_constants(strategy_name, output_path)
     print(f"Updated constants.py: active_algorithm = run_mock_{re.sub(r'[^a-z0-9_]', '', strategy_name.lower().replace(' ', '_'))}_backtest")
+
+    run_notebook()
