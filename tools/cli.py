@@ -1,11 +1,15 @@
 import sys
 from cmd_create_new import cmd_create_new
 from cmd_create_refine import cmd_create_refine
+from cmd_clear import cmd_clear
+from cmd_set import cmd_set
 
 COMMANDS = {
     "help":          "Show this help page.",
-    "create":  "Generate a new trading algorithm and set it as the active strategy.",
-    "refine":      "Run the ML parameter optimizer to tune the active algorithm.",
+    "create":        "Generate a new trading algorithm and set it as the active strategy.",
+    "refine":        "Run the ML parameter optimizer to tune the active algorithm.",
+    "set":           "Choose an existing algorithm to set as the active strategy.",
+    "clear":         "Remove the active algorithm (sets active_algorithm to None).",
 }
 
 
@@ -26,6 +30,10 @@ if __name__ == "__main__":
         cmd_create_new()
     elif command == "refine":
         cmd_create_refine()
+    elif command == "set":
+        cmd_set()
+    elif command == "clear":
+        cmd_clear()
     else:
         print_help()
 
