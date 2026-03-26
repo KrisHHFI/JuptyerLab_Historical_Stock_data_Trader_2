@@ -1,4 +1,4 @@
-from typing import Any, Callable
+from typing import Any, Callable, Dict
 from pathlib import Path
 
 from utils.data.parse_stock_filename_metadata import parse_stock_filename_metadata
@@ -9,7 +9,7 @@ from utils.printing.print_trades_table import print_trades_table
 def print_all_stock_trades(
     data_files: list[Path],
     performance_by_csv: dict[str, dict[str, Any]],
-    active_algorithm: Callable,
+    active_algorithm: Callable[..., Dict[str, Any]],
     capital: int,
     transaction_fee_bps: float,
 ) -> None:
