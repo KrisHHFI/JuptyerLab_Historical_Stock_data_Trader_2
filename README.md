@@ -13,7 +13,7 @@ The project is built around a CLI tool (`trader`) that orchestrates the full wor
 ### Setup — register the `trader` shell command (once per machine)
 
 ```bash
-echo 'function trader() { python /Users/kristopherpepper/Documents/jupyterProjects/historicalStockTrader2/tools/cli.py "$@"; }' >> ~/.zshrc && source ~/.zshrc
+echo 'function trader() { python /[YOUR PATH HERE]/jupyterProjects/historicalStockTrader2/tools/cli.py "$@"; }' >> ~/.zshrc && source ~/.zshrc
 ```
 
 ### Setup — store your GitHub token (once per machine)
