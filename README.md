@@ -8,6 +8,9 @@ Each strategy is generated as a self-contained Python backtest function and run 
 
 The project is built around a CLI tool (`trader`) that orchestrates the full workflow — from generating new algorithms to running the notebook — without needing to open Jupyter manually. The project was created mainly using Copilot.
 
+<img src="promo" height="600px" alt="Promo image" />
+
+
 ## Commands
 
 ### Setup — register the `trader` shell command (once per machine)
