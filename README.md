@@ -6,7 +6,7 @@
 
 Each strategy is generated as a self-contained Python backtest function and run against a configurable set of stock CSVs (1-minute interval data). Results are printed as a formatted performance table in the notebook. Every run is also written to a `high_scores.txt` leaderboard so the best-ever result for each strategy is preserved across sessions.
 
-The project is built around a CLI tool (`trader`) that orchestrates the full workflow — from generating new algorithms to running the notebook — without needing to open Jupyter manually.
+The project is built around a CLI tool (`trader`) that orchestrates the full workflow — from generating new algorithms to running the notebook — without needing to open Jupyter manually. The project was created mainly using Copilot.
 
 ## Commands
 
