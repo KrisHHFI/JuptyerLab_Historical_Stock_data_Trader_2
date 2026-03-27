@@ -1,0 +1,14 @@
+High Scores — Historical Backtest Results
+====================================================================================================================================================
+
+ Rank │ Strategy                                           │    Return │  Trades │  Win Rate │  Avg Trade │       Net P&L │  Stocks │ Date      
+───────┼────────────────────────────────────────────────────┼───────────┼─────────┼───────────┼────────────┼───────────────┼─────────┼────────────
+    1 │ run_mock_market_making_backtest                    │    +5.91% │    1762 │     42.2% │     +0.07% │ $  +14,178.08 │      24 │ 2026-03-27
+    2 │ run_mock_statistical_arbitrage_backtest            │    +5.72% │    1185 │     43.5% │     +0.11% │ $  +13,734.17 │      24 │ 2026-03-27
+
+Total entries: 2
+
+# ── Machine-readable data (do not edit) ──────────────────────────────────────
+## FIELDS: strategy | return_pct | trade_count | win_rate_pct | avg_trade_pct | net_pnl | num_stocks | date
+## run_mock_market_making_backtest|5.907535093798087|1762|42.22474460839955|0.0749216651078182|14178.08422511541|24|2026-03-27
+## run_mock_statistical_arbitrage_backtest|5.722568899311879|1185|43.54430379746835|0.11259533964806961|13734.16535834851|24|2026-03-27

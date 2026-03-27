@@ -1,11 +1,13 @@
 from pathlib import Path
+from utils.trading_algorithms.run_mock_market_making_backtest import run_mock_market_making_backtest
 
 raw_data_folder: str = "/Users/kristopherpepper/Documents/jupyterProjects/historicalStockTrader2/raw_data"
+high_scores_file: Path = Path(__file__).parent / "high_scores.txt"
 
 # Trading
 capital: int = 10000
 transaction_fee_bps: float = 1.0
-active_algorithm = None
+active_algorithm = run_mock_market_making_backtest
 
 # ML Optimizer
 ml_n_trials: int = 30
