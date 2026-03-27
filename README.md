@@ -1,4 +1,4 @@
-# Historical Stock Trader 2
+# Historical Stock Trader
 
 ## About
 
