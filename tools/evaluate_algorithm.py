@@ -2,11 +2,12 @@ import importlib
 import re
 import sys
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).parent.parent
 
 
-def evaluate_algorithm(strategy_name: str) -> dict:
+def evaluate_algorithm(strategy_name: str) -> dict[str, Any]:
     """Run the algorithm on all raw_data CSVs and return aggregated metrics.
 
     Returns a dict with:

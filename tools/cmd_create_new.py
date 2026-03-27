@@ -47,7 +47,7 @@ def cmd_create_new() -> None:
         print("Evaluating algorithm performance...")
         result = evaluate_algorithm(strategy_name)
 
-        failures = []
+        failures: list[str] = []
         if result.get("error"):
             failures.append("raised an error during evaluation")
         if result["trade_count"] < MIN_TOTAL_TRADES:

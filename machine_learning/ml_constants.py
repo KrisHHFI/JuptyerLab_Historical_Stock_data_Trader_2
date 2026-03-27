@@ -169,6 +169,18 @@ def _run_mock_market_making_backtest_params(trial: optuna.Trial) -> dict[str, in
         "max_hold_bars": trial.suggest_int("max_hold_bars", 30, 300),
         "cooldown_bars": trial.suggest_int("cooldown_bars", 3, 30),
     }
+
+
+def _run_mock_index_arbitrage_backtest_params(trial: optuna.Trial) -> dict[str, int | float]:
+    return {
+        "discount_threshold_pct": trial.suggest_float("discount_threshold_pct", -3.0, -0.1),
+        "ema_period": trial.suggest_int("ema_period", 5, 50),
+        "stop_loss_pct": trial.suggest_float("stop_loss_pct", 0.5, 3.0),
+        "take_profit_pct": trial.suggest_float("take_profit_pct", 1.0, 5.0),
+        "trailing_stop_pct": trial.suggest_float("trailing_stop_pct", 0.3, 2.0),
+        "max_hold_bars": trial.suggest_int("max_hold_bars", 30, 300),
+        "cooldown_bars": trial.suggest_int("cooldown_bars", 3, 30),
+    }
 # ── REGISTRY ──────────────────────────────────────────────────────────────────
 
 ML_PARAM_BUILDERS: dict[str, ParamBuilder] = {
@@ -184,6 +196,7 @@ ML_PARAM_BUILDERS: dict[str, ParamBuilder] = {
     "run_mock_statistical_arbitrage_backtest":           _run_mock_statistical_arbitrage_backtest_params,
     "run_mock_volatility_breakout_backtest":             _run_mock_volatility_breakout_backtest_params,
     "run_mock_market_making_backtest":                   _run_mock_market_making_backtest_params,
+    "run_mock_index_arbitrage_backtest":                 _run_mock_index_arbitrage_backtest_params,
 }
 
 # Resolve builder for the currently active algorithm
