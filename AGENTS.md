@@ -54,6 +54,7 @@ historicalStockTrader2/
 │   ├── cmd_clear.py                    # command: set active_algorithm to None in constants.py
 │   ├── cmd_run.py                      # command: restart the kernel and run main.ipynb
 │   ├── cmd_set.py                      # command: list existing algorithms and activate one by number
+│   ├── cmd_delete_active.py            # command: delete the active algorithm and clear constants.py
 │   ├── apply_best_params.py            # reads ml_best_params.json and patches the active algo's defaults
 │   ├── update_constants.py             # updates constants.py with the new active algorithm
 │   └── run_notebook.py                 # restarts the kernel and executes main.ipynb via nbconvert
@@ -114,7 +115,7 @@ historicalStockTrader2/
 
 ## CLI Tool
 
-- The CLI commands (`trader create`, `trader refine`, `trader set`, `trader clear`, `trader run`) are the **core functionality of this app** — they are the primary way users interact with the project to generate new strategies and optimise them.
+- The CLI commands (`trader create`, `trader refine`, `trader set`, `trader clear`, `trader delete active`, `trader run`) are the **core functionality of this app** — they are the primary way users interact with the project to generate new strategies and optimise them.
 - `tools/cli.py` is the command-line entry point for the project. Running it with no arguments (or an unrecognised command) prints a help page listing available commands.
 - Each command lives in its own `cmd_*.py` file inside `tools/`.
 - Commands are invoked via the `trader` shell function registered in `~/.zshrc`. **How to use**:
@@ -124,6 +125,7 @@ historicalStockTrader2/
   trader refine         # run the ML parameter optimizer
   trader set            # pick an existing algorithm to activate
   trader clear          # clear the active algorithm (sets active_algorithm to None)
+  trader delete active  # delete the active algorithm file and remove it from the project
   trader run            # restart the kernel and run main.ipynb end-to-end
   ```
 - To register the `trader` function on a new machine, add this to `~/.zshrc`:

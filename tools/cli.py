@@ -2,6 +2,7 @@ import sys
 from cmd_create_new import cmd_create_new
 from cmd_create_refine import cmd_create_refine
 from cmd_clear import cmd_clear
+from cmd_delete_active import cmd_delete_active
 from cmd_run import cmd_run
 from cmd_set import cmd_set
 
@@ -11,6 +12,7 @@ COMMANDS = {
     "refine":        "Run the ML parameter optimizer to tune the active algorithm.",
     "set":           "Choose an existing algorithm to set as the active strategy.",
     "clear":         "Remove the active algorithm (sets active_algorithm to None).",
+    "delete active": "Delete the active algorithm file and remove it from the project.",
     "run":           "Restart the kernel and run main.ipynb end-to-end.",
 }
 
@@ -36,6 +38,8 @@ if __name__ == "__main__":
         cmd_set()
     elif command == "clear":
         cmd_clear()
+    elif command == "delete active":
+        cmd_delete_active()
     elif command == "run":
         cmd_run()
     else:
